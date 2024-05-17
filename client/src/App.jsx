@@ -15,7 +15,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        "https://www.sulo.uno//shorten",
+        "https://url-shorter-react-server.vercel.app/shorten",
         { longUrl }
       );
       setShortUrl(response.data.shortUrl);
