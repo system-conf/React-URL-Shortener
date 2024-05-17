@@ -25,9 +25,6 @@ Bu proje, kullanıcıların uzun URL'leri kısaltmalarına olanak tanıyan bir w
 ### URL Kısaltma
 ![URL Kısaltma](/urlshortening.png)
 
-### Kısaltılmış URL Listesi
-![Kısaltılmış URL Listesi](url-list.png)
-
 ## Kurulum
 
 Projenin yerel ortamınızda çalışması için aşağıdaki adımları izleyin.
@@ -93,5 +90,5 @@ Bu proje MIT Lisansı ile lisanslanmıştır. Daha fazla bilgi için [Lisans](LI
 
 Herhangi bir sorunuz veya geri bildiriminiz varsa, lütfen benimle iletişime geçin:
 
-- **Email:** kullanici@example.com
-- **GitHub:** [kullanici-adi](https://github.com/kullanici-adi)
+- **Email:** info@suleymantalha.dev
+- **GitHub:** [system.conf](https://github.com/system-conf)
