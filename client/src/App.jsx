@@ -13,7 +13,7 @@ function App() {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:3000/shorten', { longUrl });
+      const response = await axios.post('https://url-shorter-react-server.vercel.app/shorten', { longUrl });
       setShortUrl(response.data.shortUrl);
     } catch (error) {
       setError('Kısaltma işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin.');

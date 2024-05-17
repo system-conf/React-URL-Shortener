@@ -36,7 +36,7 @@ app.post('/shorten', (req, res) => {
   const shortId = generateShortId(6);
 
   // Kısa URL oluşturun
-  const shortUrl = `http://localhost:3000/${shortId}`;
+  const shortUrl = `https://url-shorter-react-server.vercel.app/${shortId}`;
 
   // Kısa URL'yi ve uzun URL'yi eşleştirin ve veritabanına kaydedin
   urlDatabase[shortId] = longUrl;
