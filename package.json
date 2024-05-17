@@ -4,10 +4,14 @@
   "description": "A simple Node.js and React project",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start:client": "cd client && npm start",
+    "start:server": "cd server && node index.js",
+    "start": "concurrently \"npm run start:client\" \"npm run start:server\""
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }

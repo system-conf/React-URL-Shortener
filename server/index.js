@@ -1,8 +1,8 @@
 // Gerekli modülleri yükleyin
 const express = require('express');
 const bodyParser = require('body-parser');
-const crypto = require('crypto');
 const cors = require('cors');
+const path = require('path');
 
 // Express uygulamasını oluşturun
 const app = express();
