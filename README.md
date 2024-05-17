@@ -17,6 +17,17 @@ Bu proje, kullanıcıların uzun URL'leri kısaltmalarına olanak tanıyan bir w
 - **Arka Uç:** Node.js, Express
 - **Veritabanı:** MongoDB
 
+## Ekran Görüntüleri
+
+### Ana Sayfa
+![Ana Sayfa](/homepage.png)
+
+### URL Kısaltma
+![URL Kısaltma](/urlshortening.png)
+
+### Kısaltılmış URL Listesi
+![Kısaltılmış URL Listesi](url-list.png)
+
 ## Kurulum
 
 Projenin yerel ortamınızda çalışması için aşağıdaki adımları izleyin.
