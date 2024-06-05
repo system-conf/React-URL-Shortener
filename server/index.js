@@ -1,7 +1,7 @@
-// Gerekli modülleri yükleyin
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const fs = require('fs');
 const path = require('path');
 
 // Express uygulamasını oluşturun
@@ -11,8 +11,8 @@ const app = express();
 app.use(bodyParser.json()); // JSON verilerini işlemek için bodyParser kullanın
 app.use(cors()); // CORS politikalarını geçersiz kılın
 
-// URL veritabanını oluşturun
-const urlDatabase = {};
+// URL veritabanı dosyası
+const dbFilePath = path.join(__dirname, 'urls.json');
 
 // Rastgele kısa ID oluşturmak için bir fonksiyon oluşturun
 function generateShortId(length) {
@@ -27,37 +27,44 @@ function generateShortId(length) {
   return shortId;
 }
 
+// URL veritabanını yükle
+function loadDatabase() {
+  if (!fs.existsSync(dbFilePath)) {
+    return {};
+  }
+  const data = fs.readFileSync(dbFilePath, 'utf8');
+  return JSON.parse(data);
+}
+
+// URL veritabanını kaydet
+function saveDatabase(db) {
+  const data = JSON.stringify(db, null, 2);
+  fs.writeFileSync(dbFilePath, data, 'utf8');
+}
+
 // Kısa URL oluşturma endpoint'i
 app.post('/shorten', (req, res) => {
-  // İstek gövdesinden uzun URL'yi alın
   const longUrl = req.body.longUrl;
-
-  // Rastgele kısa bir ID oluşturun
   const shortId = generateShortId(6);
-
-  // Kısa URL oluşturun
   const shortUrl = `https://sulo.uno/${shortId}`;
 
-  // Kısa URL'yi ve uzun URL'yi eşleştirin ve veritabanına kaydedin
-  urlDatabase[shortId] = longUrl;
+  const db = loadDatabase();
+  db[shortId] = longUrl;
+  saveDatabase(db);
 
-  // Oluşturulan kısa URL'i yanıt olarak gönderin
   res.json({ shortUrl });
 });
 
 // Kısa URL'ye yönlendirme endpoint'i
 app.get('/:shortId', (req, res) => {
-  // Parametrelerden kısa ID'yi alın
   const shortId = req.params.shortId;
 
-  // Veritabanında kısa URL'yi kontrol edin
-  const longUrl = urlDatabase[shortId];
+  const db = loadDatabase();
+  const longUrl = db[shortId];
 
-  // Eğer bulunursa, uzun URL'e yönlendirin
   if (longUrl) {
     res.redirect(longUrl);
   } else {
-    // Eğer bulunmazsa, 404 hatası gönderin
     res.status(404).send('URL not found');
   }
 });
