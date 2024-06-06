@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="copy">Created by <a href="https://suleymantalha.dev/" target="_blank">system.conf </a>/ <a href="https://github.com/system-conf/urlShorterReact" target="_blank">GitHub</a> / License</div>
+      <div className="copy">Created by <a href="https://github.com/system-conf" target="_blank">system.conf </a>/ <a href="https://github.com/system-conf/urlShorterReact" target="_blank">GitHub</a> / License</div>
       <div className="baslik">URL SHORTENER</div>
       <form onSubmit={handleSubmit}>
         <input className="box"
